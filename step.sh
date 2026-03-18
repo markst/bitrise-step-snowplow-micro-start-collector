@@ -20,7 +20,7 @@ echo "Request server version: $micro_version"
 if [[ "$micro_version" == "latest" ]]
 then
   # See which tag the HTTP request is redirected to (can't use API due to unauthenticated rate limits)
-  micro_version=$(curl -I --silent https://github.com/snowplow-incubator/snowplow-micro/releases/latest | grep -iF location: | sed -E 's/\r$//' | sed -E 's/^.*tag\/(.*)$/\1/')
+  micro_version=$(curl -I --silent https://github.com/snowplow/snowplow-micro/releases/latest | grep -iF location: | sed -E 's/\r$//' | sed -E 's/^.*tag\/(micro-)?(.*)$/\2/')
 
   if [[ "$micro_version" == "" ]];
   then
@@ -30,6 +30,9 @@ then
     echo "Latest version is $micro_version"
   fi
 fi
+
+# Strip "micro-" prefix if provided (tags are now "micro-X.Y.Z")
+micro_version="${micro_version#micro-}"
 
 # Create the directory for the server jar files if it doesn't already exist
 micro_dir="$HOME/.snowplow/micro"
