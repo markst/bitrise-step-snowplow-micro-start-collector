@@ -39,13 +39,13 @@ micro_dir="$HOME/.snowplow/micro"
 mkdir -p "$micro_dir"
 
 # Define where the .jar will live for the requested version
-jar="$micro_dir/snowplow-$micro_version.jar"
+jar="$micro_dir/snowplow-micro-$micro_version.jar"
 
 # Download the jar if it does not already exist
 if [ ! -f "$jar" ]
 then
   echo "Downloading Snowplow Micro to $jar"
-  wget --directory-prefix "$micro_dir" "https://github.com/snowplow-incubator/snowplow-micro/releases/download/$micro_version/snowplow-$micro_version.jar"
+  wget --directory-prefix "$micro_dir" "https://github.com/snowplow/snowplow-micro/releases/download/micro-$micro_version/snowplow-micro-$micro_version.jar"
 else
   echo "Found $micro_version at $jar"
 fi
