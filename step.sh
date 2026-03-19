@@ -53,7 +53,7 @@ fi
 # Read the interface and port from the config
 # FIXME: Find a better way to read this from the .conf
 interface=$(cat "$collector_config" | grep -m 1 'interface =' | sed -E 's/.*"([^"]+)".*/\1/')
-port=$(cat "$collector_config" | grep -m 1 'port =' | sed -E 's/.*"([^"]+)".*/\1/')
+port=$(cat "$collector_config" | grep -m 1 'port =' | sed -E 's/[^0-9]*([0-9]+).*/\1/')
 echo "Read from configuration: interface: $interface, port: $port"
 
 # Start the server
