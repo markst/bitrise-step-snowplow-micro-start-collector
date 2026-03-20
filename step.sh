@@ -58,7 +58,7 @@ echo "Read from configuration: interface: $interface, port: $port"
 
 # Start the server
 echo "Starting server..."
-java -jar "$jar" --collector-config "$collector_config" --iglu "$iglu" &>/dev/null &
+java -jar "$jar" --collector-config "$collector_config" --iglu "$iglu" &
 
 # Wait for server to start
 echo "Waiting for the server to become available at $interface:$port..."
